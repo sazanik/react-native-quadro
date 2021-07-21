@@ -1,8 +1,11 @@
 import {StatusBar} from 'expo-status-bar';
-import React, {useState} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import 'react-native-gesture-handler';
+import React, {} from 'react';
+import {StyleSheet, View} from 'react-native';
 import {Main} from "./src/screens/Main";
 import {Header} from "./src/components/Header";
+import {Footer} from "./src/components/Footer";
+import {AppNavigation} from "./src/navigation/AppNavigation";
 import {THEME} from "./src/theme";
 import AppLoading from 'expo-app-loading';
 import {
@@ -17,11 +20,9 @@ import {
   Lato_900Black,
   Lato_900Black_Italic, useFonts
 } from '@expo-google-fonts/lato'
-import {Footer} from "./src/components/Footer";
 
 
 export default function App() {
-  // const [isReady, setIsReady] = useState(false)
   let [fontsLoaded] = useFonts({
     Lato_100Thin,
     Lato_900Black,
@@ -35,12 +36,8 @@ export default function App() {
     return (
       <>
         <StatusBar backgroundColor={THEME.BG_COLOR} style="auto"/>
-        <Header style={styles.footerText}/>
-        <View style={styles.container}>
-          {content}
-        </View>
-        <Footer/>
-
+        <Header style={styles.headerText}/>
+        <AppNavigation/>
       </>
     )
   }
@@ -55,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  footerText: {
+  headerText: {
     fontFamily: 'Lato_900Black'
   }
 })
