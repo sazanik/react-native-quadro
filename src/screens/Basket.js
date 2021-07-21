@@ -1,14 +1,13 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
-import {Footer} from "../components/Footer";
+import {Text, View} from "react-native";
 
-export const Basket = ({route, navigation}) => {
+
+export const Basket = ({route}) => {
   return (
     <>
       <View style={route.params.container}>
         <Text style={route.params.text}>Basket</Text>
       </View>
-      <Footer navigation={navigation} route={route}/>
     </>
   )
 }

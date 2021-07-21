@@ -1,17 +1,15 @@
 import React from "react";
 import {StyleSheet, Text, View} from "react-native";
-import {Footer} from "../components/Footer";
 import {Header} from "../components/Header";
 import {THEME} from "../theme";
 
-export const Main = ({route, navigation}) => {
+export const Main = () => {
   return (
     <>
       <Header/>
       <View style={styles.container}>
         <Text style={styles.text}>Main</Text>
       </View>
-      <Footer navigation={navigation} route={route}/>
     </>
   )
 }

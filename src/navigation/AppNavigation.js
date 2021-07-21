@@ -5,12 +5,17 @@ import {Favorites} from "../screens/Favorites";
 import {Search} from "../screens/Search";
 import {Basket} from "../screens/Basket";
 
+import {AntDesign} from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
+import {MaterialIcons} from '@expo/vector-icons';
+import {Feather} from '@expo/vector-icons';
+
 // import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
-import {Header} from "../components/Header";
 import {THEME} from "../theme";
 import {StyleSheet} from "react-native";
+
 
 const Tab = createBottomTabNavigator()
 // const Stack = createStackNavigator()
@@ -18,7 +23,36 @@ const Tab = createBottomTabNavigator()
 export const TabNavigation = props => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            size = 32
+            let Name
+            let name
+            color = focused ? THEME.MAIN_COLOR : THEME.GREY_COLOR
+            if (route.name === 'Main') {
+              Name = AntDesign
+              name = "home"
+              return <Name color={color} name={name} size={size}/>
+            } else if (route.name === 'Favorites') {
+              Name = MaterialIcons
+              name = "favorite-border"
+              return <Name color={color} name={name} size={size}/>
+            } else if (route.name === 'Search') {
+              Name = Feather
+              name = "search"
+              return <Name color={color} name={name} size={size}/>
+            } else if (route.name === 'Basket') {
+              Name = Ionicons
+              name = "cart-outline"
+              return <Name color={color} name={name} size={size}/>
+            }
+          }
+        })}
+        tabBarOptions={{showLabel: false,}}
+      >
+
+
         <Tab.Screen
           name='Main'
           component={Main}

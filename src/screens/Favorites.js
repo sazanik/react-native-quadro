@@ -1,14 +1,12 @@
 import React from "react";
-import {StyleSheet, Text, View} from "react-native";
-import {Footer} from "../components/Footer";
+import {Text, View} from "react-native";
 
-export const Favorites = ({route, navigation}) => {
+export const Favorites = ({route}) => {
   return (
     <>
       <View style={route.params.container}>
         <Text style={route.params.text}>Favorites</Text>
       </View>
-      <Footer navigation={navigation} route={route}/>
     </>
   )
 }
