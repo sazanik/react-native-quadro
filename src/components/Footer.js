@@ -1,32 +1,53 @@
-import React from "react"
-import {StyleSheet, Text, View} from "react-native";
-import {SimpleLineIcons} from '@expo/vector-icons';
+import React, {useState} from "react"
+import {StyleSheet, View} from "react-native";
+import {AntDesign} from '@expo/vector-icons';
+import {Ionicons} from '@expo/vector-icons';
+import {MaterialIcons} from '@expo/vector-icons';
+import {Feather} from '@expo/vector-icons';
 import {THEME} from "../theme";
 
 export const Footer = props => {
+
+  const [currentScreen, setCurrentScreen] = useState(1)
+
+  const handlerPress = currentScreen => {
+    setCurrentScreen(currentScreen)
+  }
+
   return (
     <View style={styles.footer}>
-      <Text style={{...styles.text, ...props.style}}>Quadrojoy</Text>
-      <SimpleLineIcons name="menu" size={24} color="black"/>
+      <AntDesign onPress={() => handlerPress(1)} color={currentScreen === 1 ? THEME.MAIN_COLOR : THEME.GREY_COLOR} name="home"
+                 style={styles.icon}/>
+      <MaterialIcons onPress={() => handlerPress(2)} color={currentScreen === 2 ? THEME.MAIN_COLOR : THEME.GREY_COLOR}
+                     name="favorite-border" style={styles.icon}/>
+      <Feather onPress={() => handlerPress(3)} color={currentScreen === 3 ? THEME.MAIN_COLOR : THEME.GREY_COLOR} name="search"
+               style={styles.icon}/>
+      <Ionicons onPress={() => handlerPress(4)} color={currentScreen === 4 ? THEME.MAIN_COLOR : THEME.GREY_COLOR}
+                name="cart-outline" style={styles.icon}/>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   footer: {
+    width: '100%',
+    height: 96,
     flexDirection: 'row',
-    height: 52,
+    justifyContent: 'space-around',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: THEME.BG_COLOR,
-    marginTop: 52,
-    paddingTop: 10,
+    backgroundColor: 'white',
     paddingBottom: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+    elevation: 7,
+
   },
   text: {
     color: THEME.MAIN_FONT_COLOR,
     fontSize: 24,
   },
+
+  icon: {
+    fontSize: 32,
+  }
 })

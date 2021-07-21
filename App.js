@@ -2,7 +2,7 @@ import {StatusBar} from 'expo-status-bar';
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Main} from "./src/screens/Main";
-import {Footer} from "./src/components/Footer";
+import {Header} from "./src/components/Header";
 import {THEME} from "./src/theme";
 import AppLoading from 'expo-app-loading';
 import {
@@ -17,6 +17,7 @@ import {
   Lato_900Black,
   Lato_900Black_Italic, useFonts
 } from '@expo-google-fonts/lato'
+import {Footer} from "./src/components/Footer";
 
 
 export default function App() {
@@ -29,15 +30,17 @@ export default function App() {
   let content = <Main/>
 
   if (!fontsLoaded) {
-    return <AppLoading/>;
+    return <AppLoading/>
   } else {
     return (
       <>
         <StatusBar backgroundColor={THEME.BG_COLOR} style="auto"/>
-        <Footer style={styles.footerText}/>
+        <Header style={styles.footerText}/>
         <View style={styles.container}>
           {content}
         </View>
+        <Footer/>
+
       </>
     )
   }
@@ -46,6 +49,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: -20,
     backgroundColor: THEME.BG_COLOR,
     alignItems: 'center',
     justifyContent: 'center',
