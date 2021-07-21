@@ -1,12 +1,13 @@
 import React from "react"
 import {StyleSheet, Text, View} from "react-native";
+import {SimpleLineIcons} from '@expo/vector-icons';
 import {THEME} from "../theme";
 
-export const Footer = () => {
+export const Footer = props => {
   return (
     <View style={styles.footer}>
-      <Text style={styles.text}>Quadrojoy</Text>
-      <Text style={styles.text}>=</Text>
+      <Text style={{...styles.text, ...props.style}}>Quadrojoy</Text>
+      <SimpleLineIcons name="menu" size={24} color="black"/>
     </View>
   )
 }
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     paddingRight: 20,
   },
   text: {
-    color: 'black',
+    color: THEME.MAIN_FONT_COLOR,
     fontSize: 24,
   },
 })
