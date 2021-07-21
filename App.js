@@ -16,11 +16,14 @@ import {
   Lato_900Black,
   Lato_900Black_Italic, useFonts
 } from '@expo-google-fonts/lato'
+import {StyleSheet, View} from "react-native";
 
 
 export default function App() {
   let [fontsLoaded] = useFonts({
     Lato_100Thin,
+    Lato_300Light,
+    Lato_400Regular,
     Lato_900Black,
   });
 
@@ -30,10 +33,13 @@ export default function App() {
   } else {
     return (
       <>
-        <StatusBar backgroundColor={THEME.BG_COLOR} style="auto"/>
+        <StatusBar style="auto"/>
+
         {/*<StackNavigation style={styles.headerText}/>*/}
         <TabNavigation/>
+
       </>
     )
   }
 }
+

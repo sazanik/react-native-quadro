@@ -2,28 +2,25 @@ import React from "react";
 import {StyleSheet, Text, View} from "react-native";
 import {Header} from "../components/Header";
 import {THEME} from "../theme";
+import {Ad} from "../components/ui/Ad";
+import {Filter} from "../components/Filter";
 
 export const Main = () => {
   return (
-    <>
+    <View style={styles.container}>
       <Header/>
-      <View style={styles.container}>
-        <Text style={styles.text}>Main</Text>
-      </View>
-    </>
+      <Ad/>
+      <Filter/>
+    </View>
   )
 }
 
 const styles = StyleSheet.create({
 
-  container: {
-    flex: 1,
-    backgroundColor: THEME.BG_COLOR,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
 
-  text: {
+    container: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
 
-  }
 })

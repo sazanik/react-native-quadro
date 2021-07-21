@@ -129,7 +129,6 @@ export const TabNavigation = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: THEME.BG_COLOR,
     justifyContent: 'center',
     alignItems: 'center'
   },

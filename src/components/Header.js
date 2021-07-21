@@ -14,15 +14,14 @@ export const Header = props => {
 
 const styles = StyleSheet.create({
   header: {
+    width:  350,
     height: 100,
     flexDirection: 'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
-    backgroundColor: THEME.BG_COLOR,
+    marginBottom: 30,
     paddingTop: 10,
     paddingBottom: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   text: {
     color: THEME.MAIN_FONT_COLOR,
