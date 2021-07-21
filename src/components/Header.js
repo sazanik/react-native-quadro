@@ -14,12 +14,11 @@ export const Header = props => {
 
 const styles = StyleSheet.create({
   header: {
+    height: 100,
     flexDirection: 'row',
-    height: 52,
-    alignItems: 'center',
+    alignItems: 'flex-end',
     justifyContent: 'space-between',
     backgroundColor: THEME.BG_COLOR,
-    marginTop: 52,
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 20,
@@ -28,5 +27,6 @@ const styles = StyleSheet.create({
   text: {
     color: THEME.MAIN_FONT_COLOR,
     fontSize: 24,
+    fontFamily: 'Lato_900Black',
   },
 })
