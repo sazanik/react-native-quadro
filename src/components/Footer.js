@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useEffect, useState} from "react"
 import {StyleSheet, View} from "react-native";
 import {AntDesign} from '@expo/vector-icons';
 import {Ionicons} from '@expo/vector-icons';
@@ -7,14 +7,15 @@ import {Feather} from '@expo/vector-icons';
 import {THEME} from "../theme";
 
 export const Footer = ({navigation, route}) => {
-
-
-  const [currentScreen, setCurrentScreen] = useState(route.name)
+  const [currentScreen, setCurrentScreen] = useState(null)
 
   const handlerPress = currentScreen => {
     navigation.navigate(currentScreen)
-    setCurrentScreen(currentScreen)
   }
+
+  useEffect(() => {
+    setCurrentScreen(route.name)
+  }, [])
 
   return (
     <View style={styles.footer}>
@@ -23,7 +24,8 @@ export const Footer = ({navigation, route}) => {
         name="home"
         style={styles.icon}/>
       <MaterialIcons
-        onPress={() => handlerPress('Favorites')} color={currentScreen === 'Favorites' ? THEME.MAIN_COLOR : THEME.GREY_COLOR}
+        onPress={() => handlerPress('Favorites')}
+        color={currentScreen === 'Favorites' ? THEME.MAIN_COLOR : THEME.GREY_COLOR}
         name="favorite-border" style={styles.icon}/>
       <Feather
         onPress={() => handlerPress('Search')} color={currentScreen === 'Search' ? THEME.MAIN_COLOR : THEME.GREY_COLOR}

@@ -1,10 +1,10 @@
 import {StatusBar} from 'expo-status-bar';
 import 'react-native-gesture-handler';
 import React, {} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import {Main} from "./src/screens/Main";
 import {Header} from "./src/components/Header";
-import {Footer} from "./src/components/Footer";
+// import {Footer} from "./src/components/Footer";
 import {AppNavigation} from "./src/navigation/AppNavigation";
 import {THEME} from "./src/theme";
 import AppLoading from 'expo-app-loading';
