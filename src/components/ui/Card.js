@@ -6,6 +6,8 @@ import AppLoading from "expo-app-loading";
 
 export const Card = ({item, onOpen}) => {
 
+  console.log(onOpen)
+
   return (
     <TouchableOpacity
       onPress={() => onOpen(item)}

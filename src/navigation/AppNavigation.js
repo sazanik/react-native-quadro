@@ -21,7 +21,8 @@ import {StyleSheet} from "react-native";
 const Tab = createBottomTabNavigator();
 // const Stack = createStackNavigator()
 
-export const TabNavigation = () => {
+export const TabNavigation = ({onOpen}) => {
+  console.log(onOpen)
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -57,6 +58,7 @@ export const TabNavigation = () => {
         <Tab.Screen
           name='Main'
           component={Main}
+          initialParams={{onOpen}}
         />
 
         <Tab.Screen

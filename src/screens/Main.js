@@ -6,11 +6,9 @@ import {Filter} from "../components/Filter";
 import {List} from "../components/List";
 import {Asset, useAssets} from "expo-asset";
 import AppLoading from "expo-app-loading";
-export const Main = ({navigation}) => {
 
-  const handlePress = (item) => {
-    console.log(item)
-  }
+
+export const Main = ({navigation, route}) => {
 
   const [assets, error] = useAssets([
     require('./../../assets/images/1.png'),
@@ -55,7 +53,7 @@ export const Main = ({navigation}) => {
       <Header/>
       <Ad/>
       <Filter/>
-      <List data={initialGoods} onOpen={handlePress}/>
+      <List data={initialGoods} onOpen={route.params.onOpen}/>
     </View>
   )
 }
