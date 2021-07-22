@@ -4,14 +4,13 @@ import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {useAssets} from "expo-asset";
 import AppLoading from "expo-app-loading";
 
-export const Card = ({item}) => {
-
-
-  console.log(item.id)
-  console.log(item.path)
+export const Card = ({item, onOpen}) => {
 
   return (
-    <TouchableOpacity style={styles.item}>
+    <TouchableOpacity
+      onPress={() => onOpen(item)}
+      style={styles.item}
+    >
       <Image style={styles.image} source={item.path}/>
       <View style={styles.wrapText}>
         <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>

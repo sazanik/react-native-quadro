@@ -1,6 +1,6 @@
 import {StatusBar} from 'expo-status-bar';
 import 'react-native-gesture-handler';
-import React, {} from 'react';
+import React, {useState} from 'react';
 import {/*StackNavigation, */TabNavigation} from "./src/navigation/AppNavigation";
 import {THEME} from "./src/theme";
 import AppLoading from 'expo-app-loading';
@@ -17,9 +17,11 @@ import {
   Lato_900Black_Italic, useFonts
 } from '@expo-google-fonts/lato'
 import {StyleSheet, View} from "react-native";
+import {Product} from "./src/screens/Product";
 
 
 export default function App() {
+
   let [fontsLoaded] = useFonts({
     Lato_100Thin,
     Lato_300Light,
@@ -31,14 +33,15 @@ export default function App() {
 
   if (!fontsLoaded) {
     return <AppLoading/>
-  } else {
-    return (
-      <TabNavigation>
-        <StatusBar style="auto"/>
-        {/*<StackNavigation style={styles.headerText}/>*/}
-
-      </TabNavigation>
-    )
   }
+
+  return (
+    <TabNavigation>
+      <StatusBar style="auto"/>
+      {/*<StackNavigation style={styles.headerText}/>*/}
+
+    </TabNavigation>
+  )
+
 }
 

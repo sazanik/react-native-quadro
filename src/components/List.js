@@ -1,18 +1,19 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, FlatList} from 'react-native';
+import {StyleSheet, SafeAreaView, FlatList, Text} from 'react-native';
 import {Card} from "./ui/Card";
 
-export const List = ({data}) => {
+export const List = ({data, onOpen}) => {
   return (
-      <SafeAreaView style={styles.container}>
-        <FlatList
-          horizontal
-          data={data}
-          renderItem={({item}) => <Card item={item} path='../../../assets/images/3.png'/>}
-          keyExtractor={item => item.id.toString()}
-          showsHorizontalScrollIndicator={false}
-        />
-      </SafeAreaView>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        horizontal
+        data={data}
+        renderItem={({item}) => <Card onOpen={onOpen} item={item}/>}
+        keyExtractor={item => item.id.toString()}
+        showsHorizontalScrollIndicator={false}
+        ListEmptyComponent={() => <Text style={{fontSize: 30, fontFamily: 'Lato_700Bold'}}>List is Empty</Text>}
+      />
+    </SafeAreaView>
   );
 }
 

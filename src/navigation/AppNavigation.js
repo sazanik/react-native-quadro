@@ -4,6 +4,7 @@ import {Main} from "../screens/Main";
 import {Favorites} from "../screens/Favorites";
 import {Search} from "../screens/Search";
 import {Basket} from "../screens/Basket";
+import {Product} from "../screens/Product";
 
 import {AntDesign} from '@expo/vector-icons';
 import {Ionicons} from '@expo/vector-icons';
@@ -59,7 +60,6 @@ export const TabNavigation = () => {
         />
 
         <Tab.Screen
-
           name='Favorites'
           component={Favorites}
           initialParams={styles}
