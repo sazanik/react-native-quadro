@@ -9,15 +9,15 @@ import AppLoading from "expo-app-loading";
 
 export const Main = () => {
 
-  useEffect(() => {
-
-  }, [])
-
   const [assets, error] = useAssets([
     require('./../../assets/images/1.png'),
     require('./../../assets/images/2.png'),
     require('./../../assets/images/3.png'),
   ])
+
+  if (!assets) {
+    return <AppLoading/>;
+  }
 
   const initialGoods = [
     {
@@ -26,7 +26,7 @@ export const Main = () => {
       desc: 'The Mavic 2 offers iconic Hasselblad image quality on Pro and a high-performance zoom lens on Zoom.',
       cost: '1424',
       rating: 4.2,
-      path: '../../../assets/images/1.png'
+      path: assets[0]
     },
     {
       id: 2,
@@ -34,7 +34,7 @@ export const Main = () => {
       desc: 'Lorem ipsum dolor sit amet.',
       cost: '990.90',
       rating: 4.5,
-      path: '../../../assets/images/2.png'
+      path: assets[1]
 
     },
     {
@@ -43,15 +43,9 @@ export const Main = () => {
       desc: 'Lorem ipsum dolor sit amet.',
       cost: '2780.30',
       rating: 3.8,
-      path: '../../../assets/images/3.png'
+      path: assets[2]
     },
   ]
-
-
-  if (!assets) {
-    return <AppLoading/>;
-  }
-
 
   return (
     <View style={styles.container}>

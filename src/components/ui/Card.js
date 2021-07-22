@@ -5,28 +5,14 @@ import {useAssets} from "expo-asset";
 import AppLoading from "expo-app-loading";
 
 export const Card = ({item}) => {
-  const path1 = '../../../assets/images/1.png'
-  const path2 = '../../../assets/images/2.png'
-  const path3 = '../../../assets/images/3.png'
 
-  const [assets] = useAssets([require(path1), require(path2), require(path3)]);
-
-  if (!assets) {
-    return <AppLoading/>;
-  }
 
   console.log(item.id)
   console.log(item.path)
 
   return (
     <TouchableOpacity style={styles.item}>
-      {item.id === 1
-        ? <Image style={styles.image} source={assets[0]}/>
-        : item.id === 2
-          ? <Image style={styles.image} source={assets[1]}/>
-          : <Image style={styles.image} source={assets[2]}/>
-      }
-
+      <Image style={styles.image} source={item.path}/>
       <View style={styles.wrapText}>
         <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>
         <View style={styles.wrapLine}>
