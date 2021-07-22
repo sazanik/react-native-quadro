@@ -46,14 +46,21 @@ export default function App() {
   }
 
   if (product) {
-    return <Product item={product} goBack={handlePressBack}/>
-  }
+    return (
+      <>
+        <StatusBar style="auto"/>
+        <Product item={product} goBack={handlePressBack}/>
+      </>
+    )}
 
   return (
-    <TabNavigation onOpen={handlePressCard}>
+    <>
       <StatusBar style="auto"/>
-      {/*<StackNavigation style={styles.headerText}/>*/}
-    </TabNavigation>
+      <TabNavigation onOpen={handlePressCard}>
+        {/*<StackNavigation style={styles.headerText}/>*/}
+      </TabNavigation>
+    </>
+
   )
 
 }

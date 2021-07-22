@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet, View} from "react-native";
 import {Header} from "../components/Header";
 import {Ad} from "../components/ui/Ad";
 import {Filter} from "../components/Filter";
@@ -54,9 +54,12 @@ export const Main = ({navigation, route}) => {
   return (
     <View style={styles.container}>
       <Header/>
-      <Ad/>
-      <Filter/>
-      <List data={initialGoods} onOpen={route.params.onOpen}/>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Ad/>
+        <Filter/>
+        <List data={initialGoods} onOpen={route.params.onOpen}/>
+      </ScrollView>
+
     </View>
   )
 }

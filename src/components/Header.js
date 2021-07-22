@@ -14,14 +14,16 @@ export const Header = props => {
 
 const styles = StyleSheet.create({
   header: {
-    width:  350,
     height: 100,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'flex-end',
+    backgroundColor: '#fff',
     justifyContent: 'space-between',
-    marginBottom: 30,
     paddingTop: 10,
     paddingBottom: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
   },
   text: {
     color: THEME.MAIN_FONT_COLOR,
