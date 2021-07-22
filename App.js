@@ -21,7 +21,7 @@ import {Product} from "./src/screens/Product";
 
 export default function App() {
 
-  const [product, setProduct] = useState(true)
+  const [product, setProduct] = useState(null)
 
   const handlePressCard = (item) => {
     setProduct(item)

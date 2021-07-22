@@ -22,7 +22,6 @@ const Tab = createBottomTabNavigator();
 // const Stack = createStackNavigator()
 
 export const TabNavigation = ({onOpen}) => {
-  console.log(onOpen)
   return (
     <NavigationContainer>
       <Tab.Navigator

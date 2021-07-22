@@ -1,5 +1,6 @@
 export const THEME = {
-  BG_COLOR: '#eeeeee',
+  BG_COLOR: '#eee',
+  GREY_SECONDARY_COLOR: '#939399',
   GREY_COLOR: '#939399',
   MAIN_COLOR: '#317AE8',
   MAIN_FONT_COLOR: '#1F1F1F'

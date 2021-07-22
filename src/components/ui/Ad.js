@@ -8,7 +8,7 @@ export const Ad = () => {
     <View style={styles.container}>
       <View style={styles.item}>
         <View style={styles.wrapText}>
-          <Text style={{...styles.text, ...styles.desc}}>Need for Speed</Text>
+          <Text style={{...styles.text, ...styles.subtitle}}>Need for Speed</Text>
           <Text style={{...styles.text, ...styles.title}}>UdoDron 3 Pro</Text>
           <Text style={{...styles.text, ...styles.cost}}>1984 $</Text>
         </View>
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
   },
 
-  desc: {
+  subtitle: {
     fontSize: 14,
   },
 

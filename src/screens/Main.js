@@ -23,6 +23,7 @@ export const Main = ({navigation, route}) => {
   const initialGoods = [
     {
       id: 1,
+      subtitle: 'Very fast quadcopter',
       title: 'DJI Air 2S',
       desc: 'The Mavic 2 offers iconic Hasselblad image quality on Pro and a high-performance zoom lens on Zoom.',
       cost: '1424',
@@ -31,8 +32,9 @@ export const Main = ({navigation, route}) => {
     },
     {
       id: 2,
+      subtitle: 'Small quadcopter',
       title: 'DJI Mavic Mini',
-      desc: 'Lorem ipsum dolor sit amet.',
+      desc: 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.',
       cost: '990.90',
       rating: 4.5,
       path: assets[1]
@@ -40,8 +42,9 @@ export const Main = ({navigation, route}) => {
     },
     {
       id: 3,
+      subtitle: 'Ordinary quadcopter',
       title: "DJI’s Matrice 200",
-      desc: 'Lorem ipsum dolor sit amet.',
+      desc: 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.',
       cost: '2780.30',
       rating: 3.8,
       path: assets[2]
