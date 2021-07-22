@@ -4,9 +4,21 @@ import {Header} from "../components/Header";
 import {Ad} from "../components/ui/Ad";
 import {Filter} from "../components/Filter";
 import {List} from "../components/List";
-
+import {Asset, useAssets} from "expo-asset";
+import AppLoading from "expo-app-loading";
 
 export const Main = () => {
+
+  useEffect(() => {
+
+  }, [])
+
+  const [assets, error] = useAssets([
+    require('./../../assets/images/1.png'),
+    require('./../../assets/images/2.png'),
+    require('./../../assets/images/3.png'),
+  ])
+
   const initialGoods = [
     {
       id: 1,
@@ -14,7 +26,7 @@ export const Main = () => {
       desc: 'The Mavic 2 offers iconic Hasselblad image quality on Pro and a high-performance zoom lens on Zoom.',
       cost: '1424',
       rating: 4.2,
-      src: '../../../assets/images/qaudro1.png'
+      path: '../../../assets/images/1.png'
     },
     {
       id: 2,
@@ -22,7 +34,7 @@ export const Main = () => {
       desc: 'Lorem ipsum dolor sit amet.',
       cost: '990.90',
       rating: 4.5,
-      src: '../../../assets/images/qaudro2.png'
+      path: '../../../assets/images/2.png'
 
     },
     {
@@ -31,9 +43,15 @@ export const Main = () => {
       desc: 'Lorem ipsum dolor sit amet.',
       cost: '2780.30',
       rating: 3.8,
-      src: '../../../assets/images/qaudro3.png'
+      path: '../../../assets/images/3.png'
     },
   ]
+
+
+  if (!assets) {
+    return <AppLoading/>;
+  }
+
 
   return (
     <View style={styles.container}>

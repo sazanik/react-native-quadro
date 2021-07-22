@@ -1,15 +1,14 @@
 import React from 'react';
-import {StyleSheet, SafeAreaView, FlatList, Text} from 'react-native';
+import {StyleSheet, SafeAreaView, FlatList} from 'react-native';
 import {Card} from "./ui/Card";
 
 export const List = ({data}) => {
-  console.log(data)
   return (
       <SafeAreaView style={styles.container}>
         <FlatList
           horizontal
           data={data}
-          renderItem={({item}) => <Card item={item}/>}
+          renderItem={({item}) => <Card item={item} path='../../../assets/images/3.png'/>}
           keyExtractor={item => item.id.toString()}
           showsHorizontalScrollIndicator={false}
         />

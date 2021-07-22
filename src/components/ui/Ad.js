@@ -15,7 +15,7 @@ export const Ad = () => {
 
         <Image
           style={styles.image}
-          source={require('../../../assets/images/quadro.png')}
+          source={require('../../../assets/images/ad.png')}
         />
       </View>
 
