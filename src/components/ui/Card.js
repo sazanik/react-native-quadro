@@ -3,7 +3,8 @@ import {Image, StyleSheet, Text, View} from "react-native";
 import {THEME} from "../../theme";
 
 
-export const Ad = () => {
+export const Card = ({item}) => {
+  console.log('ITEM CARD',item)
   return (
     <View style={styles.container}>
       <View style={styles.item}>
@@ -33,9 +34,11 @@ const styles = StyleSheet.create({
 
   item: {
     flexDirection: 'row',
-    width:  350,
+    width:  250,
     borderRadius: 20,
-    backgroundColor: THEME.MAIN_COLOR,
+    borderWidth: 1,
+    backgroundColor: 'white',
+    borderColor: 'lightgrey'
   },
 
   wrapText: {
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    color: 'white',
+    color: 'black',
     fontFamily: 'Lato_400Regular',
     marginLeft: 20,
   },
