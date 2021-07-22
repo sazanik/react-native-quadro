@@ -7,7 +7,6 @@ export const Filter = () => {
 
   const [actBtn, setActBtn] = useState('All')
 
-
   const pressHandler = val => {
     setActBtn(val)
   }

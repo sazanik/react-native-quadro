@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, SafeAreaView, FlatList, Text} from 'react-native';
 import {Card} from "./ui/Card";
 
-export const ListGoods = ({data}) => {
+export const List = ({data}) => {
   console.log(data)
   return (
       <SafeAreaView style={styles.container}>

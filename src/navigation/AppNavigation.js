@@ -10,49 +10,46 @@ import {Ionicons} from '@expo/vector-icons';
 import {MaterialIcons} from '@expo/vector-icons';
 import {Feather} from '@expo/vector-icons';
 
-// import {createStackNavigator} from "@react-navigation/stack";
 import {NavigationContainer} from "@react-navigation/native";
-import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+// import {createStackNavigator} from "@react-navigation/stack";
 import {THEME} from "../theme";
 import {StyleSheet} from "react-native";
 
 
-const Tab = createBottomTabNavigator()
+const Tab = createBottomTabNavigator();
 // const Stack = createStackNavigator()
 
-export const TabNavigation = props => {
+export const TabNavigation = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            size = 32
+          tabBarIcon: ({focused, color}) => {
             let Name
             let name
             color = focused ? THEME.MAIN_COLOR : THEME.GREY_COLOR
             if (route.name === 'Main') {
               Name = AntDesign
               name = "home"
-              return <Name color={color} name={name} size={size}/>
+              return <Name color={color} name={name} size={32}/>
             } else if (route.name === 'Favorites') {
               Name = MaterialIcons
               name = "favorite-border"
-              return <Name color={color} name={name} size={size}/>
+              return <Name color={color} name={name} size={32}/>
             } else if (route.name === 'Search') {
               Name = Feather
               name = "search"
-              return <Name color={color} name={name} size={size}/>
+              return <Name color={color} name={name} size={32}/>
             } else if (route.name === 'Basket') {
               Name = Ionicons
               name = "cart-outline"
-              return <Name color={color} name={name} size={size}/>
+              return <Name color={color} name={name} size={32}/>
             }
           }
         })}
         tabBarOptions={{showLabel: false,}}
       >
-
-
         <Tab.Screen
           name='Main'
           component={Main}

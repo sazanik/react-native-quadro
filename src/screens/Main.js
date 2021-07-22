@@ -3,9 +3,7 @@ import {StyleSheet, View} from "react-native";
 import {Header} from "../components/Header";
 import {Ad} from "../components/ui/Ad";
 import {Filter} from "../components/Filter";
-import {ListGoods} from "../components/ListGoods";
-
-
+import {List} from "../components/List";
 
 
 export const Main = () => {
@@ -14,26 +12,26 @@ export const Main = () => {
       id: 1,
       title: 'DJI Air 2S',
       desc: 'The Mavic 2 offers iconic Hasselblad image quality on Pro and a high-performance zoom lens on Zoom.',
-      cost: 1424,
+      cost: '1424',
       rating: 4.2,
-      src: ''
+      src: '../../../assets/images/qaudro1.png'
     },
     {
       id: 2,
       title: 'DJI Mavic Mini',
       desc: 'Lorem ipsum dolor sit amet.',
-      cost: 1424,
-      rating: 4.2,
-      src: ''
+      cost: '990.90',
+      rating: 4.5,
+      src: '../../../assets/images/qaudro2.png'
 
     },
     {
       id: 3,
       title: "DJI’s Matrice 200",
       desc: 'Lorem ipsum dolor sit amet.',
-      cost: 2780.30,
+      cost: '2780.30',
       rating: 3.8,
-      src: ''
+      src: '../../../assets/images/qaudro3.png'
     },
   ]
 
@@ -42,7 +40,7 @@ export const Main = () => {
       <Header/>
       <Ad/>
       <Filter/>
-      <ListGoods data={initialGoods}/>
+      <List data={initialGoods}/>
     </View>
   )
 }

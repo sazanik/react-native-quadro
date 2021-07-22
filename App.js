@@ -33,13 +33,11 @@ export default function App() {
     return <AppLoading/>
   } else {
     return (
-      <>
+      <TabNavigation>
         <StatusBar style="auto"/>
-
         {/*<StackNavigation style={styles.headerText}/>*/}
-        <TabNavigation/>
 
-      </>
+      </TabNavigation>
     )
   }
 }
