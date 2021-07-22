@@ -12,36 +12,40 @@ export const Filter = () => {
   }
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={actBtn === 'All' ? styles.activeButton : styles.button}
-        onPress={() =>  pressHandler('All')}
-      >
-        <Text style={actBtn === 'All' ? styles.activeText : styles.text}>All</Text>
-      </TouchableOpacity>
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity
+          style={actBtn === 'All' ? styles.activeButton : styles.button}
+          onPress={() => pressHandler('All')}
+        >
+          <Text style={actBtn === 'All' ? styles.activeText : styles.text}>All</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={actBtn === 'Cheap' ? styles.activeButton : styles.button}
-        onPress={() =>  pressHandler('Cheap')}
-      >
-        <Text style={actBtn === 'Cheap' ? styles.activeText : styles.text}>Cheap</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={actBtn === 'Cheap' ? styles.activeButton : styles.button}
+          onPress={() => pressHandler('Cheap')}
+        >
+          <Text style={actBtn === 'Cheap' ? styles.activeText : styles.text}>Cheap</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={actBtn === 'Best' ? styles.activeButton : styles.button}
-        onPress={() =>  pressHandler('Best')}
-      >
-        <Text style={actBtn === 'Best' ? styles.activeText : styles.text}>Best</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={actBtn === 'Best' ? styles.activeButton : styles.button}
+          onPress={() => pressHandler('Best')}
+        >
+          <Text style={actBtn === 'Best' ? styles.activeText : styles.text}>Best</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity
-        style={actBtn === 'Fast' ? styles.activeButton : styles.button}
-        onPress={() =>  pressHandler('Fast')}
-      >
-        <Text style={actBtn === 'Fast' ? styles.activeText : styles.text}>Fast</Text>
-      </TouchableOpacity>
-
-    </View>
+        <TouchableOpacity
+          style={actBtn === 'Fast' ? styles.activeButton : styles.button}
+          onPress={() => pressHandler('Fast')}
+        >
+          <Text style={actBtn === 'Fast' ? styles.activeText : styles.text}>Fast</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.wrapTitle}>
+        <Text style={styles.title}>All Quadcopters</Text>
+      </View>
+    </>
   )
 }
 
@@ -52,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
-    marginBottom: 28,
+    marginBottom: 40,
   },
 
   button: {
@@ -84,5 +88,19 @@ const styles = StyleSheet.create({
     fontFamily: 'Lato_400Regular',
     fontSize: 16,
     color: 'white'
+  },
+
+  wrapTitle: {
+    width: 350,
+    marginBottom: 30,
+  },
+
+  title: {
+    alignSelf: 'flex-start',
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'Lato_400Regular'
   }
+
+
 })

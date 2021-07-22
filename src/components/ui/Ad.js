@@ -25,15 +25,15 @@ export const Ad = () => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 164,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 32,
+    marginBottom: 50,
   },
 
   item: {
+    width: 350,
+    height: 180,
     flexDirection: 'row',
-    width:  350,
     borderRadius: 20,
     backgroundColor: THEME.MAIN_COLOR,
   },

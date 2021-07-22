@@ -6,7 +6,6 @@ export const List = ({data}) => {
   console.log(data)
   return (
       <SafeAreaView style={styles.container}>
-        <Text style={styles.text}>All Quadcopters</Text>
         <FlatList
           horizontal
           data={data}
@@ -24,11 +23,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-
-  text: {
-    marginBottom: 20,
-    alignSelf: 'flex-start',
-    fontSize: 20,
-    fontFamily: 'Lato_400Regular'
-  }
-});
+})

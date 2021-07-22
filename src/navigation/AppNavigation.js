@@ -48,7 +48,10 @@ export const TabNavigation = () => {
             }
           }
         })}
-        tabBarOptions={{showLabel: false,}}
+        sceneContainerStyle={{backgroundColor: THEME.BG_COLOR}}
+        tabBarOptions={{
+          showLabel: false,
+        }}
       >
         <Tab.Screen
           name='Main'
@@ -56,6 +59,7 @@ export const TabNavigation = () => {
         />
 
         <Tab.Screen
+
           name='Favorites'
           component={Favorites}
           initialParams={styles}
