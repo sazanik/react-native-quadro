@@ -24,6 +24,7 @@ export default function App() {
     Lato_100Thin,
     Lato_300Light,
     Lato_400Regular,
+    Lato_700Bold,
     Lato_900Black,
   });
 
