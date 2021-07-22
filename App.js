@@ -1,6 +1,6 @@
 import {StatusBar} from 'expo-status-bar';
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, {useState} from 'react';
 import {/*StackNavigation, */TabNavigation} from "./src/navigation/AppNavigation";
 import {THEME} from "./src/theme";
 import AppLoading from 'expo-app-loading';
@@ -21,8 +21,15 @@ import {Product} from "./src/screens/Product";
 
 export default function App() {
 
-  const handlePress = (item) => {
+  const [product, setProduct] = useState(true)
+
+  const handlePressCard = (item) => {
+    setProduct(item)
     console.log(item)
+  }
+
+  const handlePressBack = () => {
+    setProduct(null)
   }
 
   let [fontsLoaded] = useFonts({
@@ -38,8 +45,12 @@ export default function App() {
     return <AppLoading/>
   }
 
+  if (product) {
+    return <Product item={product} goBack={handlePressBack}/>
+  }
+
   return (
-    <TabNavigation onOpen={handlePress}>
+    <TabNavigation onOpen={handlePressCard}>
       <StatusBar style="auto"/>
       {/*<StackNavigation style={styles.headerText}/>*/}
     </TabNavigation>
