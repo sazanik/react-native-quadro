@@ -1,6 +1,7 @@
 import React from "react";
 import {AntDesign} from '@expo/vector-icons';
-import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+
 
 export const Card = ({item, onOpen}) => {
 
@@ -9,7 +10,8 @@ export const Card = ({item, onOpen}) => {
       onPress={() => onOpen(item)}
       style={styles.item}
     >
-      <Image style={styles.image} source={item.path}/>
+      {item.path}
+
       <View style={styles.wrapText}>
         <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>
         <View style={styles.wrapLine}>
@@ -64,9 +66,4 @@ const styles = StyleSheet.create({
     marginRight: 18,
   },
 
-  image: {
-    padding: 2,
-    width: 200,
-    height: 159
-  }
 })

@@ -1,7 +1,8 @@
 import React from "react";
-import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {THEME} from "../../theme";
 
+import Icon from "./SvgAd";
 
 export const Ad = ({data, onOpen}) => {
   return (
@@ -16,10 +17,7 @@ export const Ad = ({data, onOpen}) => {
           <Text style={{...styles.text, ...styles.cost}}>{data.cost}</Text>
         </View>
 
-        <Image
-          style={styles.image}
-          source={data.path}
-        />
+        {data.path}
       </View>
 
     </TouchableOpacity>
@@ -68,9 +66,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 
-  image: {
-    position: 'relative',
-    right: 50,
-    bottom: 5,
-  }
+
 })

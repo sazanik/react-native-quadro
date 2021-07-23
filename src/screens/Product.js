@@ -1,11 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 
 import {
   Text,
   StyleSheet,
   View,
   Button,
-  Image,
   TextInput,
   KeyboardAvoidingView,
   Platform,
@@ -42,7 +41,9 @@ export const Product = ({item, goBack}) => {
           <View style={styles.buttonGoBack}>
             <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black" onPress={goBack}/>
           </View>
-          <Image style={styles.image} source={item.path}/>
+
+
+          {item.path}
 
           <View style={styles.wrapTextItem}>
             <Text style={{...styles.text, ...styles.subtitle}}>{item.subtitle}</Text>
@@ -91,12 +92,6 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
 
-  image: {
-    marginTop: 120,
-    width: 343,
-    height: 281,
-    marginBottom: 30,
-  },
 
   text: {
     fontFamily: 'Lato_400Regular',

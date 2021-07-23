@@ -6,6 +6,10 @@ import {Filter} from "../components/Filter";
 import {List} from "../components/List";
 import {useAssets} from "expo-asset";
 import AppLoading from "expo-app-loading";
+import SvgAd from "../components/ui/SvgAd";
+import Svg1 from "../components/ui/Svg1";
+import Svg2 from "../components/ui/Svg2";
+import Svg3 from "../components/ui/Svg3";
 
 
 export const Main = ({route}) => {
@@ -19,7 +23,7 @@ export const Main = ({route}) => {
     cost: '1984',
     rating: '',
     speed: 60,
-    path: require('./../../assets/images/ad.png')
+    path: <SvgAd style={styles.imageAd}/>
   }
 
   const initialGoods = [
@@ -31,7 +35,7 @@ export const Main = ({route}) => {
       cost: '1424',
       rating: 4.2,
       speed: 70,
-      path: require('./../../assets/images/1.png')
+      path: <Svg1/>
     },
     {
       id: 2,
@@ -41,7 +45,7 @@ export const Main = ({route}) => {
       cost: '990.90',
       speed: 40,
       rating: 4.5,
-      path: require('./../../assets/images/2.png')
+      path: <Svg2/>
 
     },
     {
@@ -52,7 +56,7 @@ export const Main = ({route}) => {
       cost: '2780.30',
       speed: 45,
       rating: 3.8,
-      path: require('./../../assets/images/3.png')
+      path: <Svg3/>
     },
   ]
 
@@ -109,6 +113,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  imageAd: {
+    position: 'relative',
+    right: 50,
+    bottom: 5,
   },
 
 })

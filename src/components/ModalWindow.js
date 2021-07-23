@@ -2,6 +2,7 @@ import React from "react";
 import {Alert, StyleSheet, Text, Pressable, View, Image} from "react-native";
 import {THEME} from "../theme";
 import Modal from 'react-native-modal';
+import SvgModal from "./ui/SvgModal";
 
 export const ModalWindow = ({modalVisible, closeModal}) => {
 
@@ -13,10 +14,7 @@ export const ModalWindow = ({modalVisible, closeModal}) => {
     >
       <View style={styles.container}>
         <View style={styles.modalContainer}>
-          <Image
-            style={styles.image}
-            source={require('../../assets/images/modal.png')}
-          />
+          <SvgModal style={styles.icon}/>
           <Text style={[styles.text, styles.modalText]}>Your order is accepted</Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
@@ -70,6 +68,10 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     textAlign: "center",
     color: THEME.GREY_SECONDARY_COLOR,
+  },
+
+  icon: {
+    marginBottom: 25,
   },
 
   buttonText: {
