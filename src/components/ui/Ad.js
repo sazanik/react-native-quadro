@@ -2,8 +2,6 @@ import React from "react";
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {THEME} from "../../theme";
 
-import Icon from "./SvgAd";
-
 export const Ad = ({data, onOpen}) => {
   return (
     <TouchableOpacity
@@ -14,10 +12,12 @@ export const Ad = ({data, onOpen}) => {
         <View style={styles.wrapText}>
           <Text style={{...styles.text, ...styles.subtitle}}>{data.subtitle}</Text>
           <Text style={{...styles.text, ...styles.title}}>{data.title}</Text>
-          <Text style={{...styles.text, ...styles.cost}}>{data.cost}</Text>
+          <Text style={{...styles.text, ...styles.cost}}>{data.cost} $</Text>
         </View>
 
-        {data.path}
+        <View style={styles.image}>
+          {data.path(202, 164)}
+        </View>
       </View>
 
     </TouchableOpacity>
@@ -66,5 +66,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
 
+  image: {
+    position: 'relative',
+    left: -50,
+  }
 
 })

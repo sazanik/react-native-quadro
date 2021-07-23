@@ -10,7 +10,7 @@ export const Card = ({item, onOpen}) => {
       onPress={() => onOpen(item)}
       style={styles.item}
     >
-      {item.path}
+      {item.path(202, 168)}
 
       <View style={styles.wrapText}>
         <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>

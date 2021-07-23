@@ -23,7 +23,7 @@ export const Main = ({route}) => {
     cost: '1984',
     rating: '',
     speed: 60,
-    path: <SvgAd style={styles.imageAd}/>
+    path: (w, h) => <SvgAd w={w} h={h}/>
   }
 
   const initialGoods = [
@@ -35,7 +35,7 @@ export const Main = ({route}) => {
       cost: '1424',
       rating: 4.2,
       speed: 70,
-      path: <Svg1/>
+      path: (w, h) => <Svg1 w={w} h={h}/>
     },
     {
       id: 2,
@@ -45,7 +45,7 @@ export const Main = ({route}) => {
       cost: '990.90',
       speed: 40,
       rating: 4.5,
-      path: <Svg2/>
+      path: (w, h) => <Svg2 w={w} h={h}/>
 
     },
     {
@@ -56,7 +56,7 @@ export const Main = ({route}) => {
       cost: '2780.30',
       speed: 45,
       rating: 3.8,
-      path: <Svg3/>
+      path: (w, h) => <Svg3 w={w} h={h}/>
     },
   ]
 

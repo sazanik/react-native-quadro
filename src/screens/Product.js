@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 
+
+
 import {
   Text,
   StyleSheet,
@@ -42,8 +44,10 @@ export const Product = ({item, goBack}) => {
             <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black" onPress={goBack}/>
           </View>
 
+          <View style={styles.wrapImage}>
+            {item.path(343, 281)}
+          </View>
 
-          {item.path}
 
           <View style={styles.wrapTextItem}>
             <Text style={{...styles.text, ...styles.subtitle}}>{item.subtitle}</Text>
@@ -92,6 +96,9 @@ const styles = StyleSheet.create({
     zIndex: 100,
   },
 
+  wrapImage: {
+    marginTop: 80,
+  },
 
   text: {
     fontFamily: 'Lato_400Regular',
