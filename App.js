@@ -1,3 +1,9 @@
+import {LogBox} from 'react-native';
+
+LogBox.ignoreLogs([
+  'Non-serializable values were found in the navigation state',
+]);
+
 import {StatusBar} from 'expo-status-bar';
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';

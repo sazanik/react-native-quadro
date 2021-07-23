@@ -11,6 +11,7 @@ import AppLoading from "expo-app-loading";
 export const Main = ({navigation, route}) => {
 
   const [assets, error] = useAssets([
+    require('./../../assets/images/ad.png'),
     require('./../../assets/images/1.png'),
     require('./../../assets/images/2.png'),
     require('./../../assets/images/3.png'),
@@ -20,6 +21,16 @@ export const Main = ({navigation, route}) => {
     return <AppLoading/>;
   }
 
+  const ad = {
+      id: 0,
+      subtitle: 'Need for Speed',
+      title: 'UdoDron 3 Pro',
+      desc: 'It is very faster and with good camera. Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor',
+      cost: '1984',
+      rating: '',
+      path: assets[0]
+    }
+
   const initialGoods = [
     {
       id: 1,
@@ -28,7 +39,7 @@ export const Main = ({navigation, route}) => {
       desc: 'The Mavic 2 offers iconic Hasselblad image quality on Pro and a high-performance zoom lens on Zoom.',
       cost: '1424',
       rating: 4.2,
-      path: assets[0]
+      path: assets[1]
     },
     {
       id: 2,
@@ -37,7 +48,7 @@ export const Main = ({navigation, route}) => {
       desc: 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.',
       cost: '990.90',
       rating: 4.5,
-      path: assets[1]
+      path: assets[2]
 
     },
     {
@@ -47,7 +58,7 @@ export const Main = ({navigation, route}) => {
       desc: 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.',
       cost: '2780.30',
       rating: 3.8,
-      path: assets[2]
+      path: assets[3]
     },
   ]
 
@@ -55,7 +66,7 @@ export const Main = ({navigation, route}) => {
     <View style={styles.container}>
       <Header/>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Ad/>
+        <Ad data={ad} onOpen={route.params.onOpen}/>
         <Filter/>
         <List data={initialGoods} onOpen={route.params.onOpen}/>
       </ScrollView>

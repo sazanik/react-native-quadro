@@ -1,16 +1,19 @@
 import React from "react";
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {THEME} from "../../theme";
 
 
-export const Ad = () => {
+export const Ad = ({data, onOpen}) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => onOpen(data)}
+    >
       <View style={styles.item}>
         <View style={styles.wrapText}>
-          <Text style={{...styles.text, ...styles.subtitle}}>Need for Speed</Text>
-          <Text style={{...styles.text, ...styles.title}}>UdoDron 3 Pro</Text>
-          <Text style={{...styles.text, ...styles.cost}}>1984 $</Text>
+          <Text style={{...styles.text, ...styles.subtitle}}>{data.subtitle}</Text>
+          <Text style={{...styles.text, ...styles.title}}>{data.title}</Text>
+          <Text style={{...styles.text, ...styles.cost}}>{data.cost}</Text>
         </View>
 
         <Image
@@ -19,7 +22,7 @@ export const Ad = () => {
         />
       </View>
 
-    </View>
+    </TouchableOpacity>
   )
 }
 
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
 
   image: {
     position: 'relative',
-    right: 75,
+    right: 50,
     bottom: 5,
   }
 })
