@@ -1,9 +1,14 @@
 import React from "react";
-import {Text, StyleSheet, View, Button, Image} from "react-native";
+import {Text, StyleSheet, View, Button, Image, TextInput, Alert} from "react-native";
 import {Ionicons} from '@expo/vector-icons'
 import {THEME} from "../theme";
 
 export const Product = ({item, goBack}) => {
+
+  const handlePress = () => {
+    Alert.alert('Your order is accepted')
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.button}>
@@ -17,6 +22,18 @@ export const Product = ({item, goBack}) => {
         <Text style={{...styles.text, ...styles.cost}}>{item.cost} $</Text>
         <Text style={{...styles.text, ...styles.desc}}>{item.desc}</Text>
       </View>
+      <TextInput
+        style={{...styles.text, ...styles.input}}
+        placeholder='Name'
+        autoCorrect={false}
+      />
+      <TextInput
+        style={{...styles.text, ...styles.input}}
+        placeholder='Phone number'
+        autoCorrect={false}
+        keyboardType='phone-pad'
+      />
+      <Button title='TO ORDER' onPress={handlePress} color={THEME.MAIN_COLOR}/>
 
     </View>
   )
@@ -76,6 +93,17 @@ const styles = StyleSheet.create({
 
   wrapText: {
     width: 350,
-    marginBottom: 20,
+    marginBottom: 30,
   },
+
+  input: {
+    width: 350,
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
+    borderBottomColor: THEME.GREY_SECONDARY_COLOR,
+    paddingBottom: 10,
+    marginBottom: 20,
+    fontSize: 16,
+    lineHeight: 22,
+  }
 })
