@@ -1,8 +1,6 @@
 import React from "react";
 import {AntDesign} from '@expo/vector-icons';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {useAssets} from "expo-asset";
-import AppLoading from "expo-app-loading";
 
 export const Card = ({item, onOpen}) => {
 

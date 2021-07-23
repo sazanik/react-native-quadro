@@ -1,35 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {ScrollView, StyleSheet, View} from "react-native";
 import {Header} from "../components/Header";
 import {Ad} from "../components/ui/Ad";
 import {Filter} from "../components/Filter";
 import {List} from "../components/List";
-import {Asset, useAssets} from "expo-asset";
+import {useAssets} from "expo-asset";
 import AppLoading from "expo-app-loading";
 
 
-export const Main = ({navigation, route}) => {
+export const Main = ({route}) => {
 
-  const [assets, error] = useAssets([
-    require('./../../assets/images/ad.png'),
-    require('./../../assets/images/1.png'),
-    require('./../../assets/images/2.png'),
-    require('./../../assets/images/3.png'),
-  ])
-
-  if (!assets) {
-    return <AppLoading/>;
-  }
 
   const ad = {
-      id: 0,
-      subtitle: 'Need for Speed',
-      title: 'UdoDron 3 Pro',
-      desc: 'It is very faster and with good camera. Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor',
-      cost: '1984',
-      rating: '',
-      path: assets[0]
-    }
+    id: 0,
+    subtitle: 'Need for Speed',
+    title: 'UdoDron 3 Pro',
+    desc: 'It is very faster and with good camera. Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor',
+    cost: '1984',
+    rating: '',
+    speed: 60,
+    path: require('./../../assets/images/ad.png')
+  }
 
   const initialGoods = [
     {
@@ -39,7 +30,8 @@ export const Main = ({navigation, route}) => {
       desc: 'The Mavic 2 offers iconic Hasselblad image quality on Pro and a high-performance zoom lens on Zoom.',
       cost: '1424',
       rating: 4.2,
-      path: assets[1]
+      speed: 70,
+      path: require('./../../assets/images/1.png')
     },
     {
       id: 2,
@@ -47,8 +39,9 @@ export const Main = ({navigation, route}) => {
       title: 'DJI Mavic Mini',
       desc: 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.',
       cost: '990.90',
+      speed: 40,
       rating: 4.5,
-      path: assets[2]
+      path: require('./../../assets/images/2.png')
 
     },
     {
@@ -57,18 +50,53 @@ export const Main = ({navigation, route}) => {
       title: "DJI’s Matrice 200",
       desc: 'Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet.',
       cost: '2780.30',
+      speed: 45,
       rating: 3.8,
-      path: assets[3]
+      path: require('./../../assets/images/3.png')
     },
   ]
+
+  const [data, setData] = useState(() => initialGoods)
+
+
+  const [assets] = useAssets([
+    require('./../../assets/images/ad.png'),
+    require('./../../assets/images/1.png'),
+    require('./../../assets/images/2.png'),
+    require('./../../assets/images/3.png'),
+  ])
+
+
+  const filterData = (filter) => {
+    switch (filter) {
+      case 'All':
+        return initialGoods
+
+      case 'Cheap':
+        return initialGoods.reduce((prev, current) => +prev.cost < +current.cost ? prev : current)
+
+      case 'Best':
+        return initialGoods.filter(item => +item.rating > 4)
+
+      case 'Fast':
+        return initialGoods.reduce((prev, current) => +prev.speed > +current.speed ? prev : current)
+    }
+  }
+
+  const sendNewData = filter => setData([].concat(filterData(filter)))
+
+
+  if (!assets) {
+    return <AppLoading/>
+  }
 
   return (
     <View style={styles.container}>
       <Header/>
       <ScrollView showsVerticalScrollIndicator={false}>
         <Ad data={ad} onOpen={route.params.onOpen}/>
-        <Filter/>
-        <List data={initialGoods} onOpen={route.params.onOpen}/>
+        <Filter onFilter={sendNewData}/>
+        <List data={data} onOpen={route.params.onOpen}/>
       </ScrollView>
 
     </View>

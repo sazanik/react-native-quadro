@@ -31,7 +31,6 @@ export default function App() {
 
   const handlePressCard = (item) => {
     setProduct(item)
-    console.log(item)
   }
 
   const handlePressBack = () => {

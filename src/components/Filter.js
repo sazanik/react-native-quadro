@@ -3,13 +3,16 @@ import {TouchableOpacity, View, StyleSheet, Text} from "react-native";
 import {THEME} from "../theme";
 
 
-export const Filter = () => {
+export const Filter = ({onFilter}) => {
 
   const [actBtn, setActBtn] = useState('All')
 
-  const pressHandler = val => {
-    setActBtn(val)
+  const pressHandler = filter => {
+    setActBtn(filter)
+    onFilter(filter)
+
   }
+
 
   return (
     <>

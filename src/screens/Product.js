@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+
 import {
   Text,
   StyleSheet,
@@ -17,6 +18,8 @@ import {ModalWindow} from "../components/ModalWindow";
 
 export const Product = ({item, goBack}) => {
 
+  const [value, setValue] = useState('+375')
+
   const [modalVisible, setModalVisible] = useState(false);
 
   const showModal = () => {
@@ -26,7 +29,6 @@ export const Product = ({item, goBack}) => {
   const closeModal = () => {
     setModalVisible(false)
   }
-
 
   return (
     <KeyboardAvoidingView
@@ -53,12 +55,18 @@ export const Product = ({item, goBack}) => {
               style={{...styles.text, ...styles.input}}
               placeholder='Name'
               autoCorrect={false}
+              clearButtonMode='always'
             />
             <TextInput
               style={{...styles.text, ...styles.input}}
               placeholder='Phone number'
               autoCorrect={false}
-              keyboardType='numbers-and-punctuation'
+              keyboardType='phone-pad'
+              clearButtonMode='always'
+              dataDetectorTypes='phoneNumber'
+              textContentType='telephoneNumber'
+              onChangeText={text => setValue(text)}
+              value={value}
             />
             <Button title='TO ORDER' onPress={showModal} color={THEME.MAIN_COLOR}/>
           </View>
@@ -136,7 +144,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: THEME.GREY_SECONDARY_COLOR,
     paddingBottom: 10,
-    marginBottom: 20,
+    marginBottom: 10,
     fontSize: 16,
     lineHeight: 22,
   },
