@@ -18,7 +18,7 @@ export const Ad = ({data, onOpen}) => {
 
         <Image
           style={styles.image}
-          source={require('../../../assets/images/ad.png')}
+          source={data.path}
         />
       </View>
 
@@ -30,9 +30,8 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20,
+    marginTop: 30,
     marginBottom: 50
-
   },
 
   item: {

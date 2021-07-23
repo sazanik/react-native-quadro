@@ -1,17 +1,29 @@
-import React from "react";
-import {Text, StyleSheet, View, Button, Image, TextInput, Alert} from "react-native";
+import React, {useState} from "react";
+import {Text, StyleSheet, View, Button, Image, TextInput} from "react-native";
 import {Ionicons} from '@expo/vector-icons'
 import {THEME} from "../theme";
+import {ModalWindow} from "../components/ModalWindow";
 
 export const Product = ({item, goBack}) => {
 
-  const handlePress = () => {
-    Alert.alert('Your order is accepted')
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const showModal = () => {
+    setModalVisible(true)
   }
+
+  const closeModal = () => {
+    setModalVisible(false)
+  }
+
 
   return (
     <View style={styles.container}>
-      <View style={styles.button}>
+      {modalVisible
+        ? <ModalWindow modalVisible={modalVisible} closeModal={closeModal}/>
+        : null
+      }
+      <View style={styles.buttonGoBack}>
         <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black" onPress={goBack}/>
       </View>
       <Image style={styles.image} source={item.path}/>
@@ -31,9 +43,9 @@ export const Product = ({item, goBack}) => {
         style={{...styles.text, ...styles.input}}
         placeholder='Phone number'
         autoCorrect={false}
-        keyboardType='phone-pad'
+        keyboardType='numbers-and-punctuation'
       />
-      <Button title='TO ORDER' onPress={handlePress} color={THEME.MAIN_COLOR}/>
+      <Button title='TO ORDER' onPress={showModal} color={THEME.MAIN_COLOR}/>
 
     </View>
   )
@@ -41,15 +53,12 @@ export const Product = ({item, goBack}) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
-    flexDirection: 'column',
-    justifyContent: 'center',
+    flex: 1,
     alignItems: 'center',
   },
 
-  button: {
-    marginTop: 30,
-    marginBottom: 20,
+  buttonGoBack: {
+    marginTop: 60,
     marginLeft: 20,
     alignSelf: 'flex-start'
   },
@@ -93,7 +102,7 @@ const styles = StyleSheet.create({
 
   wrapText: {
     width: 350,
-    marginBottom: 30,
+    marginBottom: 50,
   },
 
   input: {
