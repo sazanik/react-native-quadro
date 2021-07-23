@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "quadro",
+    "name": "Quadcopter Shop",
     "slug": "quadro",
     "version": "1.0.0",
     "orientation": "portrait",
-
+    "icon": "./assets/rn-icon.png",
     "splash": {
-
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/rn-splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#242832"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,13 +17,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kingurru.quadcopter-shop",
+      "buildNumber": "1.0.0"
     },
+
     "android": {
       "adaptiveIcon": {
-
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.kingurru.quadcopter_shop",
+      "versionCode": 1,
+      "permissions": []
     },
     "web": {
 
