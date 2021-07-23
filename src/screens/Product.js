@@ -1,5 +1,16 @@
 import React, {useState} from "react";
-import {Text, StyleSheet, View, Button, Image, TextInput} from "react-native";
+import {
+  Text,
+  StyleSheet,
+  View,
+  Button,
+  Image,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  Keyboard,
+  TouchableWithoutFeedback
+} from "react-native";
 import {Ionicons} from '@expo/vector-icons'
 import {THEME} from "../theme";
 import {ModalWindow} from "../components/ModalWindow";
@@ -18,36 +29,42 @@ export const Product = ({item, goBack}) => {
 
 
   return (
-    <View style={styles.container}>
-      {modalVisible
-        ? <ModalWindow modalVisible={modalVisible} closeModal={closeModal}/>
-        : null
-      }
-      <View style={styles.buttonGoBack}>
-        <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black" onPress={goBack}/>
-      </View>
-      <Image style={styles.image} source={item.path}/>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          {modalVisible
+            ? <ModalWindow modalVisible={modalVisible} closeModal={closeModal}/>
+            : null
+          }
+          <View style={styles.buttonGoBack}>
+            <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black" onPress={goBack}/>
+          </View>
+          <Image style={styles.image} source={item.path}/>
 
-      <View style={styles.wrapText}>
-        <Text style={{...styles.text, ...styles.subtitle}}>{item.subtitle}</Text>
-        <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>
-        <Text style={{...styles.text, ...styles.cost}}>{item.cost} $</Text>
-        <Text style={{...styles.text, ...styles.desc}}>{item.desc}</Text>
-      </View>
-      <TextInput
-        style={{...styles.text, ...styles.input}}
-        placeholder='Name'
-        autoCorrect={false}
-      />
-      <TextInput
-        style={{...styles.text, ...styles.input}}
-        placeholder='Phone number'
-        autoCorrect={false}
-        keyboardType='numbers-and-punctuation'
-      />
-      <Button title='TO ORDER' onPress={showModal} color={THEME.MAIN_COLOR}/>
-
-    </View>
+          <View style={styles.wrapTextItem}>
+            <Text style={{...styles.text, ...styles.subtitle}}>{item.subtitle}</Text>
+            <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>
+            <Text style={{...styles.text, ...styles.cost}}>{item.cost} $</Text>
+            <Text style={{...styles.text, ...styles.desc}}>{item.desc}</Text>
+          </View>
+          <View style={styles.wrapForm}>
+            <TextInput
+              style={{...styles.text, ...styles.input}}
+              placeholder='Name'
+              autoCorrect={false}
+            />
+            <TextInput
+              style={{...styles.text, ...styles.input}}
+              placeholder='Phone number'
+              autoCorrect={false}
+              keyboardType='numbers-and-punctuation'
+            />
+            <Button title='TO ORDER' onPress={showModal} color={THEME.MAIN_COLOR}/>
+          </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -55,15 +72,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'space-evenly'
   },
 
+
   buttonGoBack: {
-    marginTop: 60,
-    marginLeft: 20,
-    alignSelf: 'flex-start'
+    position: 'absolute',
+    left: -15,
+    top: 50,
+    zIndex: 100,
   },
 
   image: {
+    marginTop: 120,
     width: 343,
     height: 281,
     marginBottom: 30,
@@ -100,9 +121,13 @@ const styles = StyleSheet.create({
     color: THEME.GREY_SECONDARY_COLOR,
   },
 
-  wrapText: {
+  wrapTextItem: {
     width: 350,
-    marginBottom: 50,
+    marginBottom: 70,
+  },
+
+  wrapForm: {
+    marginBottom: 30
   },
 
   input: {
@@ -114,5 +139,5 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 16,
     lineHeight: 22,
-  }
+  },
 })

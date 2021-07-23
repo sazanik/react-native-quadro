@@ -1,18 +1,15 @@
 import React from "react";
-import {Alert, Modal, StyleSheet, Text, Pressable, View, Image} from "react-native";
+import {Alert, StyleSheet, Text, Pressable, View, Image} from "react-native";
 import {THEME} from "../theme";
+import Modal from 'react-native-modal';
 
 export const ModalWindow = ({modalVisible, closeModal}) => {
 
   return (
     <Modal
-      animationType="slide"
-      transparent={true}
-      visible={modalVisible}
-      onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-        closeModal();
-      }}
+      isVisible={modalVisible}
+      backdropColor={'black'}
+      backdropOpacity={.7}
     >
       <View style={styles.container}>
         <View style={styles.modalContainer}>
