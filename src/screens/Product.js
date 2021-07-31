@@ -1,17 +1,15 @@
 import React, {useState} from "react";
 
 
-
 import {
   Text,
   StyleSheet,
   View,
-  Button,
   TextInput,
   KeyboardAvoidingView,
   Platform,
   Keyboard,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback, TouchableOpacity, Alert
 } from "react-native";
 import {Ionicons} from '@expo/vector-icons'
 import {THEME} from "../theme";
@@ -19,11 +17,13 @@ import {ModalWindow} from "../components/ModalWindow";
 
 export const Product = ({item, goBack}) => {
 
-  const [value, setValue] = useState('+375')
+  const [fieldNumber, setFieldNumber] = useState('+375')
+  const [fieldName, setFieldName] = useState('')
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const showModal = () => {
+  const handlePress = () => {
+    if (!(fieldName && fieldNumber)) return Alert.alert('Form fields must be filled')
     setModalVisible(true)
   }
 
@@ -31,53 +31,63 @@ export const Product = ({item, goBack}) => {
     setModalVisible(false)
   }
 
+
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.container}>
-          {modalVisible
-            ? <ModalWindow modalVisible={modalVisible} closeModal={closeModal}/>
-            : null
-          }
-          <View style={styles.buttonGoBack}>
-            <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black" onPress={goBack}/>
-          </View>
+      <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+          <View style={styles.container}>
+            {modalVisible
+                ? <ModalWindow modalVisible={modalVisible} closeModal={closeModal}/>
+                : null
+            }
+            <View style={styles.buttonGoBack}>
+              <Ionicons.Button name="chevron-back" backgroundColor='white' size={30} color="black"
+                               onPress={goBack}/>
+            </View>
 
-          <View style={styles.wrapImage}>
-            {item.path(343, 281)}
-          </View>
+            <View style={styles.wrapImage}>
+              {item.path(343, 281)}
+            </View>
 
 
-          <View style={styles.wrapTextItem}>
-            <Text style={{...styles.text, ...styles.subtitle}}>{item.subtitle}</Text>
-            <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>
-            <Text style={{...styles.text, ...styles.cost}}>{item.cost} $</Text>
-            <Text style={{...styles.text, ...styles.desc}}>{item.desc}</Text>
+            <View style={styles.wrapTextItem}>
+              <Text style={{...styles.text, ...styles.subtitle}}>{item.subtitle}</Text>
+              <Text style={{...styles.text, ...styles.title}}>{item.title}</Text>
+              <Text style={{...styles.text, ...styles.cost}}>{item.cost} $</Text>
+              <Text style={{...styles.text, ...styles.desc}}>{item.desc}</Text>
+            </View>
+            <View style={styles.wrapForm}>
+              <TextInput
+                  style={{...styles.text, ...styles.input}}
+                  placeholder='Name'
+                  autoCorrect={false}
+                  clearButtonMode='always'
+                  onChangeText={text => setFieldName(text)}
+                  value={fieldName}
+              />
+              <TextInput
+                  style={{...styles.text, ...styles.input}}
+                  placeholder='Phone number'
+                  autoCorrect={false}
+                  keyboardType='phone-pad'
+                  clearButtonMode='always'
+                  dataDetectorTypes='phoneNumber'
+                  textContentType='telephoneNumber'
+                  onChangeText={text => setFieldNumber(text)}
+                  value={fieldNumber}
+              />
+              <TouchableOpacity
+                  activeOpacity={.8}
+                  style={styles.buttonSubmit}
+                  onPress={handlePress}
+              >
+                <Text style={{color: 'white'}}>TO ORDER</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-          <View style={styles.wrapForm}>
-            <TextInput
-              style={{...styles.text, ...styles.input}}
-              placeholder='Name'
-              autoCorrect={false}
-              clearButtonMode='always'
-            />
-            <TextInput
-              style={{...styles.text, ...styles.input}}
-              placeholder='Phone number'
-              autoCorrect={false}
-              keyboardType='phone-pad'
-              clearButtonMode='always'
-              dataDetectorTypes='phoneNumber'
-              textContentType='telephoneNumber'
-              onChangeText={text => setValue(text)}
-              value={value}
-            />
-            <Button title='TO ORDER' onPress={showModal} color={THEME.MAIN_COLOR}/>
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
   )
 }
 
@@ -94,6 +104,14 @@ const styles = StyleSheet.create({
     left: -15,
     top: 50,
     zIndex: 100,
+  },
+
+  buttonSubmit: {
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    backgroundColor: THEME.MAIN_COLOR,
   },
 
   wrapImage: {
